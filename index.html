@@ -1,117 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación Presupuesto</title>
-    <link href="css/estilos.css" rel='stylesheet'/>
-</head>
-<body onload='cargarApp()'>
-    <div class="cabecero">
-        <div class="presupuesto">
-            <div class="presupuesto_titulo">
-                Presupuesto Disponible
-            </div>
-            <div class="presupuesto_valor" id='presupuesto'>+ 2,000.00</div>
-            <div class="presupuesto_ingreso limpiarEstilos">
-                <div class="presupuesto_ingreso--texto">Ingresos</div>
-                <div class="derecha">
-                    <div class="presupuesto_ingreso--valor" id='ingresos'>+4,000.00</div>
-                    <div class="presupuesto_ingreso--porcentaje">&nbsp;</div>
-                </div>
-            </div>
-            <div class="presupuesto_egreso limpiarEstilos">
-                <div class="presupuesto_egreso--texto">Egresos</div>
-                <div class="derecha limpiarEstilos">
-                    <div class="presupuesto_egreso--valor" id='egresos'>- 1,900.00</div>
-                    <div class="presupuesto_egreso--porcentaje" id='porcentaje'>45%</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<html>
 
-    <form id='forma' onsubmit="return false;">
-        <div class="agregar">
-            <div class="agregar_contenedor">
-                <select class='agregar_tipo' id='tipo'>
-                    <option value='ingreso' selected>+</option>
-                    <option value='egreso'>-</option>
-                </select>
-                <input type='text' class='agregar_descripcion'
-                placeholder="Agregar Descripción" id='descripcion'/>
-                <input type='number' class='agregar_valor'
-                placeholder="Valor" id='valor' step='any'/>
-                <button class='agregar_btn' onclick="agregarDato()">
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                </button>
-            </div>
-        </div>
-    </form>
+  <head>
 
-    <div class="contenedor limpiarEstilos">
-        <div class="ingreso">
-            <h2 class='ingreso_titulo'>Ingresos</h2>
-            <div id='lista-ingresos'>
-                <div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">Salario</div>
-                    <div class="derecha limpiarEstilos">
-                        <div class="elemento_valor">+ 2,200.00</div>
-                        <div class="elemento_eliminar">
-                            <button class='elemento_eliminar--btn'>
-                                <ion-icon name="close-circle-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">Venta coche</div>
-                    <div class="derecha limpiarEstilos">
-                        <div class="elemento_valor">+ 1,500.00</div>
-                        <div class="elemento_eliminar">
-                            <button class='elemento_eliminar--btn'>
-                                <ion-icon name="close-circle-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="egreso">
-            <h2 class='egreso_titulo'>Egresos</h2>
-            <div id='lista-egresos'>
-                <div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">Renta departamento</div>
-                    <div class="derecha limpiarEstilos">
-                        <div class="elemento_valor">- 900.00</div>
-                        <div class="elemento_porcentaje">21%</div>
-                        <div class="elemento_eliminar">
-                            <button class='elemento_eliminar--btn'>
-                                <ion-icon name="close-circle-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="elemento limpiarEstilos">
-                    <div class="elemento_descripcion">Ropa</div>
-                    <div class="derecha limpiarEstilos">
-                        <div class="elemento_valor">- 400.00</div>
-                        <div class="elemento_porcentaje">10%</div>
-                        <div class="elemento_eliminar">
-                            <button class='elemento_eliminar--btn'>
-                                <ion-icon name="close-circle-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autenticación</title>
+    <link rel="stylesheet" href="estilos.css">
 
-    <script src='js/Dato.js'></script>
-    <script src='js/Ingreso.js'></script>
-    <script src='js/Egreso.js'></script>
-    <script src='js/app.js'></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-</body>
+   <!-- Carga el núcleo de Firebase JS SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <!-- Agrega el manejo de autenticación. -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js">
+    </script>
+    <script src="js/init.js"></script>
+
+  </head>
+
+  <body>
+    
+    <h1>Autenticación</h1>
+    <h1>Sesión</h1>
+    <fieldset>
+      <legend>Email</legend>
+      <output id="email"><progress max="100">Cargando…</progress></output>
+    </fieldset>
+    <fieldset>
+      <legend>Nombre</legend>
+      <output id="nombre"></output>
+    </fieldset>
+    <figure><img id="avatar" alt="Avatar"></figure>
+    <button type="button" onclick="terminaSesión()">Terminar Sesión</button>
+    <footer>Copyright &copy; 2021 Ricardo Armando Machorro Reyes.</footer>
+    <script>
+      //@ts-check
+      /** Conexión al sistema de autenticación de Firebase. */
+      // @ts-ignore
+      const auth = firebase.auth();
+      /** Tipo de autenticación de usuarios. En este caso es con Google. */
+      // @ts-ignore
+      const provider = new firebase.auth.GoogleAuthProvider();
+      /* Configura el proveedor de Google para que permita seleccionar de una
+       * lista. */
+      provider.setCustomParameters({ prompt: "select_account" });
+      /* Recibe una función que se invoca cada que hay un cambio en la
+       * autenticación y recibe el modelo con las características del usuario.*/
+      auth.onAuthStateChanged(
+        /** Recibe las características del usuario o null si no ha iniciado
+         * sesión. */
+        usuarioAuth => {
+          if (usuarioAuth && usuarioAuth.email) {
+            // Usuario aceptado.
+            // @ts-ignore Muestra el email registrado en Google.
+            email.value = usuarioAuth.email;
+            // @ts-ignore Muestra el nombre registrado en Google.
+            nombre.value = usuarioAuth.displayName;
+            // @ts-ignore Muestra el avatar registrado en Google.
+            avatar.src = usuarioAuth.photoURL;
+          } else {
+            // No ha iniciado sesión. Pide datos para iniciar sesión.
+            auth.signInWithRedirect(provider); 
+          }
+        },
+        // Función que se invoca si hay un error al verificar el usuario. //
+        procesaError
+      );
+      /** Termina la sesión. */
+      async function terminaSesión() {
+        try {
+          await auth.signOut();
+        } catch (e) {
+          procesaError(e);
+        }
+      }
+      /** Procesa un error. Muestra el objeto en la consola y un cuadro de
+       * alerta con el mensaje.
+       * @param {Error} e descripción del error. */
+      function procesaError(e) {
+        console.log(e);
+        alert(e.message);
+      }
+    </script>
+
+  </body>
+
 </html>
