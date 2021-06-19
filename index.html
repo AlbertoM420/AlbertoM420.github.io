@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Autenticación</title>
+    <title>Inicio</title>
     <link href="css/estilos.css" rel='stylesheet'/>
     
    <!-- Carga el núcleo de Firebase JS SDK -->
@@ -20,11 +20,11 @@
 
   <body>
     
-    <h1>App de Presupuestos</h1>
+    <h1 align="center">App de Presupuestos</h1>
     <h1>Sesión</h1>
     
     <figure><img id="avatar" alt="Avatar"></figure><br>
-    <button aling= "center "type="button" onclick="terminaSesión()">Terminar Sesión</button><br>
+    
     
     <fieldset>
       <legend>Email</legend><br>
@@ -34,9 +34,12 @@
     <fieldset>
       <legend>Nombre</legend><br>
       <output id="nombre"></output><br>
-    </fieldset>
+    </fieldset><br>
+    
+    <button align= "center "type="button" onclick="terminaSesión()">Terminar Sesión</button><br>
    
     <footer>Copyright &copy; 2021 Mendez Alva Mario Alberto.</footer>
+    
     <script>
       //@ts-check
       /** Conexión al sistema de autenticación de Firebase. */
