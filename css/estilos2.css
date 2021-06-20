@@ -4,5 +4,10 @@ h1 {
 }
 
 body{
-    color: cadetblue;
+    color: blueviolet;
+}
+
+fieldset{
+    border: 40px;
+    padding: 40px;
 }
