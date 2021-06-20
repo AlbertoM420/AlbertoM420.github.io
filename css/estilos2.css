@@ -1,18 +1,35 @@
-h1 {
-    color: brown;
+h1{
+    color: gold;
+}
+
+a:link, a:visited{
+    background-color: #b5179e;
+    color:aliceblue;
+    padding: 15px 25px;
     text-align: center;
+    text-decoration: none;
 }
 
-body{
-    background-color: blueviolet;
+a:hover, a:active{
+    background-color:black;
 }
 
-fieldset{
-    background-color: brown;
-    align-items: center;
+/*a:link{
+    color: chartreuse;
+    text-decoration: none;
 }
 
-a{
-    align-content: center;
-
+a:visited{
+    color:blueviolet;
+    text-decoration: none;
 }
+
+a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
+a:active{
+    color:cyan;
+    text-decoration: underline;
+}*/
