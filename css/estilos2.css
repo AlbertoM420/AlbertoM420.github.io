@@ -8,11 +8,11 @@ body{
 }
 
 fieldset{
-    border: 5px;
-    padding: 5px;
+    background-color: brown;
+    align-items: center;
 }
 
 a{
-    align-items: center;
+    align-content: center;
 
 }
