@@ -4,7 +4,7 @@ h1 {
 }
 
 body{
-    color: blueviolet;
+    background-color: blueviolet;
 }
 
 fieldset{
@@ -12,3 +12,7 @@ fieldset{
     padding: 5px;
 }
 
+a{
+    align-items: center;
+
+}
